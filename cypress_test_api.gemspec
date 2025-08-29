@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'wesley-key-sdk'
-  s.version = '1.1.1'
+  s.version = '1.1.2'
   s.summary = 'tesst'
   s.description = 'Omnis nisi cumque si'
   s.authors = ['Kenyon Jacobs']
