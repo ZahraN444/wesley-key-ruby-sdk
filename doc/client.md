@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| default_host | `String` | *Default*: `'www.example.com'` |
+| test_header | `String` | This is a test header<br>*Default*: `'TestHeaderDefaultValue'` |
 | environment | `Environment` | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | connection | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | adapter | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
@@ -17,20 +17,38 @@ The following parameters are configurable for the API Client:
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
 | proxy_settings | [`ProxySettings`](../doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| api_key_credentials | [`ApiKeyCredentials`](auth/custom-header-signature.md) | The credential object for Custom Header Signature |
+| http_basic_credentials | [`HttpBasicCredentials`](auth/basic-authentication.md) | The credential object for Basic Authentication |
+| petstore_auth_credentials | [`PetstoreAuthCredentials`](auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
 
 The API client can be initialized as follows:
 
 ```ruby
-require 'cypress_test_api'
-include CypressTestApi
+require 'swagger_petstore'
+include SwaggerPetstore
 
 client = Client.new(
-  environment: Environment::PRODUCTION,
-  default_host: 'www.example.com'
+  test_header: 'TestHeaderDefaultValue',
+  api_key_credentials: ApiKeyCredentials.new(
+    api_key: 'api_key'
+  ),
+  http_basic_credentials: HttpBasicCredentials.new(
+    username: 'username',
+    passwprd: 'passwprd'
+  ),
+  petstore_auth_credentials: PetstoreAuthCredentials.new(
+    o_auth_client_id: 'OAuthClientId',
+    o_auth_redirect_uri: 'OAuthRedirectUri',
+    o_auth_scopes: [
+      OAuthScopePetstoreAuthEnum::READPETS,
+      OAuthScopePetstoreAuthEnum::WRITEPETS
+    ]
+  ),
+  environment: Environment::PRODUCTION
 )
 ```
 
-## Cypress Test API Client
+## Swagger Petstore Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 
@@ -38,5 +56,7 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description |
 |  --- | --- |
-| api | Gets APIController |
+| pet | Gets PetController |
+| store | Gets StoreController |
+| user | Gets UserController |
 
