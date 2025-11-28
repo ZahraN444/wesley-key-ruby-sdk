@@ -4,8 +4,8 @@
 The SDK client can also be initialized directly from environment variables using the `from_env` class method. This allows the SDK to automatically read configuration values from the runtime environment or a `.env` file.
 
 ```ruby
-require 'swagger_petstore'
-include SwaggerPetstore
+require 'cypress_test_api'
+include CypressTestApi
 
 # Create client from environment
 client = Client.from_env
@@ -24,8 +24,8 @@ so the `from_env` method can access them.
 
 ```ruby
 require 'dotenv/load'
-require 'swagger_petstore'
-include SwaggerPetstore
+require 'cypress_test_api'
+include CypressTestApi
 
 # Create client from environment
 client = Client.from_env
@@ -44,15 +44,9 @@ Values provided through arguments take precedence over those defined in environm
 ## Example .env File
 
 ```ruby
-TEST_HEADER=TestHeaderDefaultValue
+DEFAULT_HOST='www.example.com'
 ENVIRONMENT='production'
 
-API_KEY_API_KEY=
-HTTP_BASIC_USERNAME='username'
-HTTP_BASIC_PASSWPRD='passwprd'
-PETSTORE_AUTH_O_AUTH_CLIENT_ID='oAuthClientId'
-PETSTORE_AUTH_O_AUTH_REDIRECT_URI='oAuthRedirectUri'
-PETSTORE_AUTH_O_AUTH_SCOPES=READ,WRITE
 
 TIMEOUT=60
 MAX_RETRIES=3

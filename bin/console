@@ -4,11 +4,11 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
 # Require the gem
-require 'swagger_petstore'
+require 'cypress_test_api'
 
-puts 'SwaggerPetstore SDK loaded!'
-puts 'You can now create a client with: client = SwaggerPetstore::Client.new'
-puts 'Or use from_env: client = SwaggerPetstore::Client.from_env'
+puts 'CypressTestApi SDK loaded!'
+puts 'You can now create a client with: client = CypressTestApi::Client.new'
+puts 'Or use from_env: client = CypressTestApi::Client.from_env'
 
 # Start an interactive IRB session
 require 'irb'
