@@ -15,11 +15,11 @@ Represents the proxy server configurations for API calls.
 ## Usage Example
 
 ```ruby
-require 'swagger_petstore'
-include SwaggerPetstore
+require 'cypress_test_api'
+include CypressTestApi
 
 
-client = SwaggerPetstore::Client.new(
+client = CypressTestApi::Client.new(
   proxy_settings: ProxySettings.new(
     address: "http://localhost",
     port: 8888,
