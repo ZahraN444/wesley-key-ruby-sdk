@@ -10,16 +10,16 @@ This is a sample API to demonstrate an OpenAPI spec with multiple endpoints and 
 Install the gem from the command line:
 
 ```bash
-gem install wesley-key-sdk -v 3.0.4
+gem install wesley-key-sdk -v 3.0.5
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'wesley-key-sdk', '3.0.4'
+gem 'wesley-key-sdk', '3.0.5'
 ```
 
-For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/3.0.4).
+For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/3.0.5).
 
 ## IRB Console Usage
 
@@ -66,14 +66,14 @@ rake
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
 | default_host | `String` | *Default*: `'www.example.com'` |
-| environment | `Environment` | The API environment. <br> **Default: `Environment.PRODUCTION`** |
+| environment | [`Environment`](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | connection | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | adapter | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
 | timeout | `Float` | The value to use for connection timeout. <br> **Default: 60** |
@@ -83,7 +83,7 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| proxy_settings | [`ProxySettings`](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 
 The API client can be initialized as follows:
 
@@ -109,26 +109,36 @@ include CypressTestApi
 client = Client.from_env
 ```
 
-See the [`Environment-Based Client Initialization`](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/environment-based-client-initialization.md) section for details.
+See the [`Environment-Based Client Initialization`](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/environment-based-client-initialization.md) section for details.
+
+## Environments
+
+The SDK can be configured to use a different environment for making API calls. Available environments are:
+
+### Fields
+
+| Name | Description |
+|  --- | --- |
+| PRODUCTION | **Default** |
 
 ## List of APIs
 
-* [API](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/controllers/api.md)
+* [API](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/controllers/api.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/environment-based-client-initialization.md)
+* [ProxySettings](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/environment-based-client-initialization.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/http-response.md)
-* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/http-request.md)
+* [HttpResponse](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/http-response.md)
+* [HttpRequest](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/http-request.md)
 
 ### Utilities
 
-* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/api-helper.md)
-* [DateTimeHelper](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.4/doc/date-time-helper.md)
+* [ApiHelper](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/api-helper.md)
+* [DateTimeHelper](https://www.github.com/ZahraN444/wesley-key-ruby-sdk/tree/3.0.5/doc/date-time-helper.md)
 
