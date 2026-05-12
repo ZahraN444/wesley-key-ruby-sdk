@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'wesley-key-sdk'
-  s.version = '4.3.1'
+  s.version = '4.3.2'
   s.summary = 'tesst'
   s.description = 'Omnis nisi cumque si'
   s.authors = ['Kenyon Jacobs']
@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://www.halefokodaqiby.com'
   s.licenses = ['MIT']
   s.metadata  = {
+    "test"    => "https://www.halefokodaqiby.com",
 }
 
   s.add_dependency('apimatic_core_interfaces', '~> 0.2.3')
