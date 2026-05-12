@@ -18,16 +18,16 @@ Callbacks are used for asynchronous operations where the API will call back to y
 Install the gem from the command line:
 
 ```bash
-gem install wesley-key-sdk -v 4.0.0
+gem install wesley-key-sdk -v 4.3.1
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'wesley-key-sdk', '4.0.0'
+gem 'wesley-key-sdk', '4.3.1'
 ```
 
-For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/4.0.0).
+For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/4.3.1).
 
 ## IRB Console Usage
 
