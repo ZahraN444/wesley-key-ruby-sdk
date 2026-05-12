@@ -54,6 +54,9 @@ Layout/MultilineMethodCallIndentation:
 Style/OptionalBooleanParameter:
   Enabled: false
 
+Style/KeywordParametersOrder:
+  Enabled: false
+
 AllCops:
   Exclude:
     - './test/**/*'

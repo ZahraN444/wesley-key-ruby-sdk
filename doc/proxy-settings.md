@@ -15,11 +15,11 @@ Represents the proxy server configurations for API calls.
 ## Usage Example
 
 ```ruby
-require 'cypress_test_api'
-include CypressTestApi
+require 'webhooks_and_callbacks_api'
+include WebhooksAndCallbacksApi
 
 
-client = CypressTestApi::Client.new(
+client = WebhooksAndCallbacksApi::Client.new(
   proxy_settings: ProxySettings.new(
     address: "http://localhost",
     port: 8888,

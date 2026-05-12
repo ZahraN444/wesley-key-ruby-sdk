@@ -4,8 +4,8 @@
 The SDK client can also be initialized directly from environment variables using the `from_env` class method. This allows the SDK to automatically read configuration values from the runtime environment or a `.env` file.
 
 ```ruby
-require 'cypress_test_api'
-include CypressTestApi
+require 'webhooks_and_callbacks_api'
+include WebhooksAndCallbacksApi
 
 # Create client from environment
 client = Client.from_env
@@ -24,8 +24,8 @@ so the `from_env` method can access them.
 
 ```ruby
 require 'dotenv/load'
-require 'cypress_test_api'
-include CypressTestApi
+require 'webhooks_and_callbacks_api'
+include WebhooksAndCallbacksApi
 
 # Create client from environment
 client = Client.from_env
@@ -44,9 +44,24 @@ Values provided through arguments take precedence over those defined in environm
 ## Example .env File
 
 ```ruby
-DEFAULT_HOST='www.example.com'
 ENVIRONMENT='production'
 
+API_KEY_X_API_KEY='xAPIKey'
+BEARER_AUTH_ACCESS_TOKEN='accessToken'
+
+LOG_LEVEL=Debug
+MASK_SENSITIVE_HEADERS=true
+REQUEST_LOG_BODY=true
+REQUEST_LOG_HEADERS=true
+REQUEST_INCLUDE_QUERY_IN_PATH=true
+REQUEST_HEADERS_TO_INCLUDE=Content-Type,X-Request-ID
+REQUEST_HEADERS_TO_EXCLUDE=Authorization
+REQUEST_HEADERS_TO_UNMASK=X-Request-ID
+RESPONSE_LOG_BODY=true
+RESPONSE_LOG_HEADERS=true
+RESPONSE_HEADERS_TO_INCLUDE=Content-Type,X-Correlation-ID,Date,Server
+RESPONSE_HEADERS_TO_EXCLUDE=Set-Cookie,Authorization,X-API-Key
+RESPONSE_HEADERS_TO_UNMASK=X-Correlation-ID
 
 TIMEOUT=60
 MAX_RETRIES=3

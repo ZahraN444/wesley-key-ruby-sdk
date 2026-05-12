@@ -4,11 +4,11 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
 # Require the gem
-require 'cypress_test_api'
+require 'webhooks_and_callbacks_api'
 
-puts 'CypressTestApi SDK loaded!'
-puts 'You can now create a client with: client = CypressTestApi::Client.new'
-puts 'Or use from_env: client = CypressTestApi::Client.from_env'
+puts 'WebhooksAndCallbacksApi SDK loaded!'
+puts 'You can now create a client with: client = WebhooksAndCallbacksApi::Client.new'
+puts 'Or use from_env: client = WebhooksAndCallbacksApi::Client.from_env'
 
 # Start an interactive IRB session
 require 'irb'
