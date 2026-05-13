@@ -3,13 +3,13 @@
 
 
 
-Documentation for accessing and setting credentials for ApiKey.
+Documentation for accessing and setting credentials for api_key.
 
 ## Auth Credentials
 
 | Name | Type | Description | Getter |
 |  --- | --- | --- | --- |
-| X-API-Key | `String` | API key for authentication | `x_api_key` |
+| api_key | `String` | - | `api_key` |
 
 
 
@@ -22,12 +22,12 @@ Documentation for accessing and setting credentials for ApiKey.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 client = Client.new(
   api_key_credentials: ApiKeyCredentials.new(
-    x_api_key: 'X-API-Key'
+    api_key: 'api_key'
   )
 )
 ```

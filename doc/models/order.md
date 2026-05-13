@@ -11,37 +11,23 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `order_id` | `String` | Optional | - |
-| `customer_id` | `String` | Optional | - |
-| `items` | [`Array[OrderItem]`](../../doc/models/order-item.md) | Optional | - |
-| `total_amount` | `Float` | Optional | - |
-| `status` | [`Status`](../../doc/models/status.md) | Optional | - |
-| `created_at` | `DateTime` | Optional | - |
-| `updated_at` | `DateTime` | Optional | - |
+| `id` | `Integer` | Optional | - |
+| `pet_id` | `Integer` | Optional | - |
+| `quantity` | `Integer` | Optional | - |
+| `ship_date` | `DateTime` | Optional | - |
+| `status` | [`OrderStatus`](../../doc/models/order-status.md) | Optional | Order Status |
+| `complete` | `TrueClass \| FalseClass` | Optional | - |
 | `additional_properties` | `Hash[String, Object]` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "orderId": "order_789",
-  "customerId": "cust_12345",
-  "totalAmount": 59.98,
-  "status": "pending",
-  "createdAt": "09/19/2025 10:30:00",
-  "updatedAt": "09/19/2025 10:30:00",
-  "items": [
-    {
-      "productId": "productId2",
-      "quantity": 22,
-      "price": 56.94,
-      "description": "description2",
-      "exampleAdditionalProperty": {
-        "key1": "val1",
-        "key2": "val2"
-      }
-    }
-  ],
+  "id": 180,
+  "petId": 220,
+  "quantity": 136,
+  "shipDate": "2016-03-13T12:52:32.123Z",
+  "status": "placed",
   "exampleAdditionalProperty": {
     "key1": "val1",
     "key2": "val2"

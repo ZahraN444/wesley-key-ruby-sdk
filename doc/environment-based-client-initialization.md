@@ -4,8 +4,8 @@
 The SDK client can also be initialized directly from environment variables using the `from_env` class method. This allows the SDK to automatically read configuration values from the runtime environment or a `.env` file.
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 # Create client from environment
 client = Client.from_env
@@ -24,8 +24,8 @@ so the `from_env` method can access them.
 
 ```ruby
 require 'dotenv/load'
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 # Create client from environment
 client = Client.from_env
@@ -46,8 +46,10 @@ Values provided through arguments take precedence over those defined in environm
 ```ruby
 ENVIRONMENT='production'
 
-API_KEY_X_API_KEY='xAPIKey'
-BEARER_AUTH_ACCESS_TOKEN='accessToken'
+PETSTORE_AUTH_OAUTH_CLIENT_ID='oauthClientId'
+PETSTORE_AUTH_OAUTH_REDIRECT_URI='oauthRedirectUri'
+PETSTORE_AUTH_OAUTH_SCOPES=READ,WRITE
+API_KEY_API_KEY='apiKey'
 
 LOG_LEVEL=Debug
 MASK_SENSITIVE_HEADERS=true

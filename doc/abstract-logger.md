@@ -19,7 +19,7 @@ In order to provide custom logger implementation, the `AbstractLogger` class mus
 require 'ougai'
 require 'logger'
 
-include WebhooksAndCallbacksApi
+include SwaggerPetstoreOpenApi30
 
 
 class CustomLogger < AbstractLogger
@@ -38,8 +38,8 @@ end
 Following is how the custom logger implementation can be injected in the SDK client.
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 client = Client.new(
   logging_configuration: LoggingConfiguration.new(

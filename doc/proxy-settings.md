@@ -15,11 +15,11 @@ Represents the proxy server configurations for API calls.
 ## Usage Example
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 
-client = WebhooksAndCallbacksApi::Client.new(
+client = SwaggerPetstoreOpenApi30::Client.new(
   proxy_settings: ProxySettings.new(
     address: "http://localhost",
     port: 8888,

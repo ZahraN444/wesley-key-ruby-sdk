@@ -1,33 +1,35 @@
 
-# Getting Started with Webhooks and Callbacks API
+# Getting Started with Swagger Petstore - OpenAPI 3.0
 
 ## Introduction
 
-A comprehensive API demonstrating webhooks and callbacks patterns.
+This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
 
-### Webhooks
+Some useful links:
 
-Webhooks allow your application to receive real-time notifications when certain events occur.
+- [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+- [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
 
-### Callbacks
-
-Callbacks are used for asynchronous operations where the API will call back to your provided URL when the operation completes.
+Find out more about Swagger: [https://swagger.io](https://swagger.io)
 
 ## Install the Package
 
 Install the gem from the command line:
 
 ```bash
-gem install wesley-key-sdk -v 4.3.2
+gem install wesley-key-sdk -v 4.2.0
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'wesley-key-sdk', '4.3.2'
+gem 'wesley-key-sdk', '4.2.0'
 ```
 
-For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/4.3.2).
+For additional gem details, see the [RubyGems page for the wesley-key-sdk gem](https://rubygems.org/gems/wesley-key-sdk/versions/4.2.0).
 
 ## IRB Console Usage
 
@@ -44,8 +46,8 @@ irb
 Now you can load the SDK in the IRB
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 ```
 
 ### 2. Use IRB within SDK
@@ -53,7 +55,7 @@ include WebhooksAndCallbacksApi
 Open your system terminal (Command Prompt, Git Bash or macOS Terminal) and navigate to the root folder of SDK.
 
 ```
-cd path/to/webhooks_and_callbacks_api
+cd path/to/swagger_petstore_open_api30
 ```
 
 Now you can start the preconfigured irb console by running the following command
@@ -72,9 +74,10 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| environment | [`Environment`](README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
 | connection | `Faraday::Connection` | The Faraday connection object passed by the SDK user for making requests |
 | adapter | `Faraday::Adapter` | The Faraday adapter object passed by the SDK user for performing http requests |
-| timeout | `Float` | The value to use for connection timeout. <br> **Default: 50** |
+| timeout | `Float` | The value to use for connection timeout. <br> **Default: 30** |
 | max_retries | `Integer` | The number of times to retry an endpoint call if it fails. <br> **Default: 0** |
 | retry_interval | `Float` | Pause in seconds between retries. <br> **Default: 1** |
 | backoff_factor | `Float` | The amount to multiply each successive retry's interval amount by in order to provide backoff. <br> **Default: 2** |
@@ -83,24 +86,30 @@ The following parameters are configurable for the API Client:
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
 | proxy_settings | [`ProxySettings`](doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 | logging_configuration | [`LoggingConfiguration`](doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| petstore_auth_credentials | [`PetstoreAuthCredentials`](doc/auth/oauth-2-implicit-grant.md) | The credential object for OAuth 2 Implicit Grant |
 | api_key_credentials | [`ApiKeyCredentials`](doc/auth/custom-header-signature.md) | The credential object for Custom Header Signature |
-| bearer_auth_credentials | [`BearerAuthCredentials`](doc/auth/oauth-2-bearer-token.md) | The credential object for OAuth 2 Bearer token |
 
 The API client can be initialized as follows:
 
 ### Code-Based Client Initialization
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 client = Client.new(
+  petstore_auth_credentials: PetstoreAuthCredentials.new(
+    oauth_client_id: 'OAuthClientId',
+    oauth_redirect_uri: 'OAuthRedirectUri',
+    oauth_scopes: [
+      OauthScopePetstoreAuth::WRITEPETS,
+      OauthScopePetstoreAuth::READPETS
+    ]
+  ),
   api_key_credentials: ApiKeyCredentials.new(
-    x_api_key: 'X-API-Key'
+    api_key: 'api_key'
   ),
-  bearer_auth_credentials: BearerAuthCredentials.new(
-    access_token: 'AccessToken'
-  ),
+  environment: Environment::PRODUCTION,
   logging_configuration: LoggingConfiguration.new(
     log_level: Logger::INFO,
     request_logging_config: RequestLoggingConfiguration.new(
@@ -116,8 +125,8 @@ client = Client.new(
 ### Environment-Based Client Initialization
 
 ```ruby
-require 'webhooks_and_callbacks_api'
-include WebhooksAndCallbacksApi
+require 'swagger_petstore_open_api30'
+include SwaggerPetstoreOpenApi30
 
 # Create client from environment
 client = Client.from_env
@@ -125,24 +134,28 @@ client = Client.from_env
 
 See the [`Environment-Based Client Initialization`](doc/environment-based-client-initialization.md) section for details.
 
+## Environments
+
+The SDK can be configured to use a different environment for making API calls. Available environments are:
+
+### Fields
+
+| Name | Description |
+|  --- | --- |
+| PRODUCTION | **Default** |
+
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`ApiKey (Custom Header Signature)`](doc/auth/custom-header-signature.md)
-* [`BearerAuth (OAuth 2 Bearer token)`](doc/auth/oauth-2-bearer-token.md)
+* [`petstore_auth (OAuth 2 Implicit Grant)`](doc/auth/oauth-2-implicit-grant.md)
+* [`api_key (Custom Header Signature)`](doc/auth/custom-header-signature.md)
 
 ## List of APIs
 
-* [Orders](doc/controllers/orders.md)
-
-## Webhooks
-
-* [Webhooks](doc/events/webhooks/webhooks-handler.md)
-* [Webhooks A](doc/events/webhooks/webhooks-a-handler.md)
-* [Webhooks B](doc/events/webhooks/webhooks-b-handler.md)
-* [Webhooks C](doc/events/webhooks/webhooks-c-handler.md)
-* [Webhooks No Verification](doc/events/webhooks/webhooks-no-verification-handler.md)
+* [Pet](doc/controllers/pet.md)
+* [Store](doc/controllers/store.md)
+* [User](doc/controllers/user.md)
 
 ## SDK Infrastructure
 
